@@ -1,4 +1,4 @@
-const readCSV = require('../src/csvReader');
+const readCSV = require('../../src/csvReader');
 
 test('Read CSV File', async () => {
     const data = await readCSV('./sample.csv');
@@ -8,7 +8,7 @@ test('Read CSV File', async () => {
     expect(data[0].age).toBe('30');
 });
 
-const parseQuery = require('../src/queryParser');
+const parseQuery = require('../../src/queryParser');
 
 test('Parse SQL Query', () => {
     const query = 'SELECT id, name FROM sample';
