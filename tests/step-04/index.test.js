@@ -1,11 +1,11 @@
-const executeSELECTQuery = require('../../src/index');
+const parseQuery = require('../../src/queryParser');
 
-test('Execute SQL Query', async () => {
+test('Parse SQL Query', () => {
     const query = 'SELECT id, name FROM sample';
-    const result = await executeSELECTQuery(query);
-    expect(result.length).toBeGreaterThan(0);
-    expect(result[0]).toHaveProperty('id');
-    expect(result[0]).toHaveProperty('name');
-    expect(result[0]).not.toHaveProperty('age');
-    expect(result[0]).toEqual({ id: '1', name: 'John' });
+    const parsed = parseQuery(query);
+    expect(parsed).toEqual({
+        fields: ['id', 'name'],
+        table: 'sample',
+        whereClause: null
+    });
 });

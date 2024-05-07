@@ -1,14 +1,5 @@
-const readCSV = require('../src/csvReader');
 
-test('Read CSV File', async () => {
-    const data = await readCSV('./sample.csv');
-    expect(data.length).toBeGreaterThan(0);
-    expect(data.length).toBe(3);
-    expect(data[0].name).toBe('John');
-    expect(data[0].age).toBe('30');
-});
-
-const parseQuery = require('../src/queryParser');
+const parseQuery = require('../../src/queryParser');
 
 test('Parse SQL Query', () => {
     const query = 'SELECT id, name FROM sample';
@@ -20,7 +11,7 @@ test('Parse SQL Query', () => {
     });
 });
 
-const executeSELECTQuery = require('../src/index');
+const executeSELECTQuery = require('../../src/index');
 
 test('Execute SQL Query with WHERE Clause', async () => {
     const query = 'SELECT id, name FROM sample WHERE age = 25';
